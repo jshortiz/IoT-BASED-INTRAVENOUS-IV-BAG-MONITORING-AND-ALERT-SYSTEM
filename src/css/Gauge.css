@@ -1,0 +1,53 @@
+.gauge-container {
+    position: relative;
+    width: 200px;
+    height: 200px;
+    margin: 0 auto;
+  }
+  
+  .gauge-svg {
+    transform: rotate(0.1deg); /* Fixes minor rendering issues in some browsers */
+  }
+  
+  .gauge-arc {
+    transition: stroke-dashoffset 0.5s ease-out, stroke 0.5s ease-out;
+  }
+  
+  .needle {
+    transition: transform 0.5s ease-out;
+  }
+  
+  .center-dot {
+    filter: drop-shadow(0 0 2px rgba(0,0,0,0.3));
+  }
+  
+  .weight-display {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -40%);
+    text-align: center;
+  }
+  
+  .weight-value {
+    font-family: 'Roboto', sans-serif;
+    font-size: 2rem;
+    font-weight: 700;
+    color: #2c3e50;
+    text-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  }
+  
+  .weight-label {
+    font-family: 'Roboto', sans-serif;
+    font-size: 0.8rem;
+    color: #95a5a6;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-top: -5px;
+  }
+  
+  .min-label, .max-label {
+    font-family: 'Roboto', sans-serif;
+    font-size: 0.7rem;
+    fill: #95a5a6;
+  }

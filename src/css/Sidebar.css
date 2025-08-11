@@ -1,0 +1,453 @@
+/* sidebar.css */
+
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap');
+
+.sidebar {
+  width: 280px;
+  height: 100vh;
+  background: linear-gradient(180deg, #005b96 0%, #003b5e 100%);
+  color: #fff;
+  padding: 25px;
+  position: fixed;
+  box-shadow: 10px 0 30px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  font-family: 'Poppins', sans-serif;
+  transition: transform 0.3s ease;
+}
+
+/* When visible, no transform */
+.sidebar.visible {
+  transform: translateX(0);
+}
+
+/* When hidden, slide completely off-screen */
+.sidebar.hidden {
+  transform: translateX(-100%);
+}
+
+.logo-container {
+  text-align: center;
+  margin-bottom: 40px;
+  padding-bottom: 25px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.logo-img {
+  width: 90px;
+  height: 90px;
+  border-radius: 50%;
+  border: 3px solid #fff;
+  box-shadow: 0 0 20px rgba(255, 255, 255, 0.1);
+  transition: transform 0.3s ease;
+  margin-bottom: 15px;
+}
+
+.logo-img:hover {
+  transform: scale(1.05);
+}
+
+.hospital-name {
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin: 10px 0 5px;
+  letter-spacing: 0.5px;
+}
+
+.hospital-slogan {
+  font-size: 0.85rem;
+  opacity: 0.8;
+  font-weight: 300;
+}
+
+.sidebar-nav ul {
+  list-style: none;
+  padding: 0;
+  margin: 20px 0;
+}
+
+.sidebar-nav li {
+  margin-bottom: 12px;
+}
+
+.nav-link {
+  color: #fff;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  padding: 15px 20px;
+  border-radius: 8px;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.nav-link:hover {
+  background: rgba(255, 255, 255, 0.1);
+  transform: translateX(10px);
+}
+
+.nav-link::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 3px;
+  background: #fff;
+  transform: scaleY(0);
+  transition: transform 0.3s ease;
+}
+
+.nav-link:hover::before {
+  transform: scaleY(1);
+}
+
+.nav-icon {
+  font-size: 1.2rem;
+  margin-right: 15px;
+  width: 25px;
+}
+
+.nav-arrow {
+  margin-left: auto;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.nav-link:hover .nav-arrow {
+  opacity: 1;
+}
+
+.sidebar-footer {
+  margin-top: auto;
+  text-align: center;
+  padding-top: 25px;
+}
+
+.footer-line {
+  height: 1px;
+  background: rgba(255, 255, 255, 0.1);
+  margin-bottom: 20px;
+}
+
+.sidebar-footer p {
+  font-size: 0.8rem;
+  opacity: 0.7;
+  margin: 3px 0;
+}
+
+/* Fixed toggle button always visible */
+.fixed-toggle {
+  position: fixed;
+  top: 15px;
+  left: 15px;
+  font-size: 24px;
+  color: #fff;
+  background: #005b96;
+  padding: 10px;
+  border-radius: 4px;
+  z-index: 1100;
+  cursor: pointer;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .sidebar {
+    width: 220px;
+  }
+}
+
+
+/* Add these styles to your Room.css */
+:root {
+    --primary: #005b96;
+    --secondary: #003b5e;
+    --success: #4CAF50;
+    --warning: #FFC107;
+    --danger: #F44336;
+    --text: #2c3e50;
+    --background: #f8f9fa;
+    --card-bg: #ffffff;
+  }
+  
+  .room-detail-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem;
+  }
+  
+  .back-btn {
+    background: none;
+    border: none;
+    color: var(--primary);
+    font-size: 1rem;
+    cursor: pointer;
+    padding: 0.5rem 1rem;
+    border-radius: 8px;
+    transition: background 0.3s;
+    margin-bottom: 2rem;
+  }
+  
+  .back-btn:hover {
+    background: rgba(0, 91, 150, 0.1);
+  }
+  
+  .monitor-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+    margin-top: 2rem;
+  }
+  
+  .gauge-card {
+    background: var(--card-bg);
+    border-radius: 16px;
+    padding: 2rem;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+    cursor: pointer;
+    transition: transform 0.3s;
+  }
+  
+  .gauge-card:hover {
+    transform: translateY(-5px);
+  }
+  
+  .gauge-header {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 1.5rem;
+  }
+  
+  .bed-label {
+    font-weight: 600;
+    color: var(--primary);
+  }
+  
+  .timestamp {
+    color: #7f8c8d;
+    font-size: 0.9rem;
+  }
+  
+  .weight-status {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-top: 1.5rem;
+    padding-top: 1rem;
+    border-top: 1px solid #eee;
+  }
+  
+  .status-dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+  }
+  
+  .patient-info-card {
+    background: var(--card-bg);
+    border-radius: 16px;
+    padding: 2rem;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+  }
+  
+  .patient-details {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+    margin-top: 1.5rem;
+  }
+  
+  .detail-item {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+  
+  .detail-item.full-width {
+    grid-column: span 2;
+  }
+  
+  .detail-label {
+    font-weight: 500;
+    color: #7f8c8d;
+  }
+  
+  .detail-value {
+    font-weight: 500;
+    color: var(--text);
+  }
+  
+  .edit-btn {
+    background: var(--primary);
+    color: white;
+    border: none;
+    padding: 0.8rem 1.5rem;
+    border-radius: 8px;
+    cursor: pointer;
+    margin-top: 2rem;
+    width: 100%;
+    transition: opacity 0.3s;
+  }
+  
+  .edit-btn:hover {
+    opacity: 0.9;
+  }
+  
+  .room-selection {
+    padding: 2rem;
+  }
+  
+  .section-title {
+    color: var(--text);
+    margin-bottom: 2rem;
+  }
+  
+  .room-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+  }
+  
+  .room-card {
+    background: var(--card-bg);
+    border-radius: 16px;
+    padding: 2rem;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+    cursor: pointer;
+    transition: transform 0.3s;
+    display: flex;
+    gap: 1.5rem;
+    align-items: center;
+  }
+  
+  .room-card:hover {
+    transform: translateY(-5px);
+  }
+  
+  .room-number {
+    width: 60px;
+    height: 60px;
+    background: var(--primary);
+    color: white;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    font-weight: 600;
+  }
+  
+  .room-info h3 {
+    margin: 0;
+    color: var(--text);
+  }
+  
+  .status-indicator {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    margin-top: 0.5rem;
+  }
+  
+  .status-indicator.active {
+    background: var(--success);
+  }
+  
+  .patient-form-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+  }
+  
+  .patient-form {
+    background: white;
+    padding: 2rem;
+    border-radius: 16px;
+    width: 90%;
+    max-width: 600px;
+  }
+  
+  .form-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+    margin: 1.5rem 0;
+  }
+  
+  .form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+  
+  .form-group.full-width {
+    grid-column: span 2;
+  }
+  
+  .form-group label {
+    font-weight: 500;
+    color: var(--text);
+  }
+  
+  .form-group input,
+  .form-group select {
+    padding: 0.8rem;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    font-size: 1rem;
+  }
+  
+  .form-actions {
+    display: flex;
+    gap: 1rem;
+    justify-content: flex-end;
+  }
+  
+  .save-btn {
+    background: var(--primary);
+    color: white;
+    padding: 0.8rem 1.5rem;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+  }
+  
+  .cancel-btn {
+    background: #f0f2f5;
+    color: var(--text);
+    padding: 0.8rem 1.5rem;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+  }
+  
+  .loading-state {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+    padding: 4rem;
+  }
+  
+  .spinner {
+    width: 40px;
+    height: 40px;
+    border: 4px solid #f3f3f3;
+    border-top: 4px solid var(--primary);
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+  }
+  
+  @keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+  }
